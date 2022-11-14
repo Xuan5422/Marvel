@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from "react";
 import AppHeader from "../appHeader/AppHeader";
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
@@ -9,20 +9,20 @@ import decoration from '../../resources/img/vision.png';
 
 class App extends Component {
 
-    state = {
-        currentChar: null,
-    }
+        state = {
+            currentChar: null,
+        }
+    
 
     currCharId = (id) => {
         this.setState({
-            currentChar: id
+                currentChar: id            
         });
-        console.log(' App:currCharId:currentChar: ' + this.state.currentChar)
+
+        console.log('App::currCharId::currentChar' + id);
     }
 
     render() {
-
-        console.log('App-render');
         return (
             <div className="app">
                 <AppHeader />

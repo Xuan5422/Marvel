@@ -64,8 +64,6 @@ class RandomChar extends Component {
 
     render() {
 
-        console.log('RandomChar-render');
-
         const { loading, error } = this.state;
         
         const errorMesage = error ? <ErrorMessage/> : null;

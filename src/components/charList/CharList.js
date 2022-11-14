@@ -11,11 +11,11 @@ class CharList extends Component {
     constructor(props) {
         super(props);
         this.arrClass = [];
+        
         this.state = {
             offset: 0,
             activCharItem: null,
             charLst: [],
-
         
     }
         
@@ -42,24 +42,28 @@ class CharList extends Component {
     onCharClick = (e) => {
         const {charLst} = this.state;
         const {currCharId} = this.props;
+/*         const aaa = e.currentTarget.id;
 
-        console.log('onCharClick-e.currentTarget.id:' + e.currentTarget.id);
 
         this.setState({
+                activCharItem: aaa                       
+        }); */
 
-                activCharItem: e.currentTarget.id
-            
-        });
+        this.setState({
+            activCharItem: e.currentTarget.id
+        }, () => console.log('текущий стейт ', this.state.activCharItem));
 
         console.log('onCharClick-activCharItem: ' + this.state.activCharItem); 
         console.log('{...charLst[e.currentTarget.id]}.id :' + {...charLst[e.currentTarget.id]}.id );
-        
-        currCharId({...charLst[e.currentTarget.id]}.id);
+
+ //       currCharId({...charLst[e.currentTarget.id]}.id);
+        currCharId(this.state.activCharItem)
     }
 
     render() {
-        const {charLst, activCharItem } = this.state;
-        console.log('CharList-render-activCharItem: ' + activCharItem);
+        const {charLst, activCharItem} = this.state;
+  //      const {currCharId} = this.props;
+
 
         for (let i = 0; i <= 8; i++) this.arrClass[i] = "char__item";
         if(activCharItem !== null) this.arrClass[activCharItem] = `${this.arrClass[activCharItem]} char__item_selected`;
