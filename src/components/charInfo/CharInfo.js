@@ -86,10 +86,11 @@ class CharInfo extends Component {
 const View = ({char}) => {
     const {name, description, thumbnail, homepage, wiki, comics } = char;
     const descr = description ? description : "There is no description for this character.";
+    let imgStyle = {'objectFit': 'cover'};
     let comicsList;
-    comicsList = "There are no comisc for this character.";
-    console.dir(comics);
-    console.log({...comics}.available);
+
+    if(thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') imgStyle = {'objectFit': 'cover'};
+
     if({...comics}.available) {
            comicsList = {...comics}.items.map( (item, i) => {
                 return (
@@ -102,7 +103,7 @@ const View = ({char}) => {
     return (
         <>
             <div className="char__basics">
-                    <img src={thumbnail} alt={name} />
+                    <img src={thumbnail} alt={name} style={imgStyle}/>
                     <div>
                         <div className="char__info-name">{name}</div>
                         <div className="char__btns">
