@@ -19,7 +19,7 @@ class App extends Component {
                 currentChar: id            
         });
 
-        console.log('App::currCharId::currentChar' + id);
+ //       console.log('App::currCharId::currentChar: ' + this.state.currentChar);
     }
 
     render() {

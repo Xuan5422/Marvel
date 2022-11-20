@@ -97,6 +97,7 @@ class RandomChar extends Component {
 const View = ({char}) => {
     const {name, description, thumbnail, homepage, wiki } = char;
     const noImage = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
+    const descr = description ? description : "There is no description for this character."
     let classForImg = 'randomchar__img';
     
 
@@ -107,7 +108,7 @@ const View = ({char}) => {
             <img src={thumbnail} alt="Random character" className={classForImg} />
             <div className="randomchar__info">
                 <p className="randomchar__name">{name}</p>
-                <p className="randomchar__descr">{description}</p>
+                <p className="randomchar__descr">{descr}</p>
                 <div className="randomchar__btns">
                     <a href={homepage} className="button button__main">
                         <div className="inner">homepage</div>

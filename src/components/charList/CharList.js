@@ -28,13 +28,15 @@ class CharList extends Component {
     }
 
     updateCharList = () => {
+        const {currCharId} = this.props;
         this.marvelService
             .getAllCharacters(this.state.offset)
                 .then((resp) => {
                     this.setState({
                         charLst: resp,
                         offset: this.state.offset + 9
-                    });            
+                    });
+                    currCharId(null);          
                 })
 
     }
@@ -42,28 +44,15 @@ class CharList extends Component {
     onCharClick = (e) => {
         const {charLst} = this.state;
         const {currCharId} = this.props;
-/*         const aaa = e.currentTarget.id;
-
-
-        this.setState({
-                activCharItem: aaa                       
-        }); */
 
         this.setState({
             activCharItem: e.currentTarget.id
-        }, () => console.log('текущий стейт ', this.state.activCharItem));
+        }, () => currCharId({...charLst[this.state.activCharItem]}.id))
 
-        console.log('onCharClick-activCharItem: ' + this.state.activCharItem); 
-        console.log('{...charLst[e.currentTarget.id]}.id :' + {...charLst[e.currentTarget.id]}.id );
-
- //       currCharId({...charLst[e.currentTarget.id]}.id);
-        currCharId(this.state.activCharItem)
     }
 
     render() {
         const {charLst, activCharItem} = this.state;
-  //      const {currCharId} = this.props;
-
 
         for (let i = 0; i <= 8; i++) this.arrClass[i] = "char__item";
         if(activCharItem !== null) this.arrClass[activCharItem] = `${this.arrClass[activCharItem]} char__item_selected`;
