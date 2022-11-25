@@ -3,6 +3,7 @@ import AppHeader from "../appHeader/AppHeader";
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
+import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 import decoration from '../../resources/img/vision.png';
 
@@ -30,7 +31,10 @@ class App extends Component {
                     <RandomChar />
                     <div className="char__content">
                         <CharList currCharId={this.currCharId}/>
-                        <CharInfo currChar={this.state.currentChar} />
+                        <ErrorBoundary>
+                            <CharInfo currChar={this.state.currentChar} />
+                        </ErrorBoundary>
+                        
                     </div>
                     <img className="bg-decoration" src={decoration} alt="vision" />
                 </main>

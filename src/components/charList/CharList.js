@@ -61,39 +61,39 @@ class CharList extends Component {
         return (
             <div className="char__list">
                 <ul className="char__grid">
-                    <li id={"0"} className={this.arrClass[0]} onClick={this.onCharClick}>
+                    <li tabindex ="1" id={"0"} className={this.arrClass[0]} onClick={this.onCharClick}>
                         <img src={{...charLst[0]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[0]}.name}</div>
                     </li>
-                    <li id="1" className={this.arrClass[1]} onClick={this.onCharClick}>
+                    <li tabindex ="2" id="1" className={this.arrClass[1]} onClick={this.onCharClick}>
                         <img src={{...charLst[1]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[1]}.name}</div>
                     </li>
-                    <li id="2" className={this.arrClass[2]} onClick={this.onCharClick}>
+                    <li tabindex ="3" id="2" className={this.arrClass[2]} onClick={this.onCharClick}>
                         <img src={{...charLst[2]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[2]}.name}</div>
                     </li>
-                    <li id="3" className={this.arrClass[3]} onClick={this.onCharClick}>
+                    <li tabindex ="4" id="3" className={this.arrClass[3]} onClick={this.onCharClick}>
                         <img src={{...charLst[3]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[3]}.name}</div>
                     </li>
-                    <li id="4" className={this.arrClass[4]} onClick={this.onCharClick}>
+                    <li tabindex ="5" id="4" className={this.arrClass[4]} onClick={this.onCharClick}>
                         <img src={{...charLst[4]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[4]}.name}</div>
                     </li>
-                    <li id="5" className={this.arrClass[5]} onClick={this.onCharClick}>
+                    <li tabindex ="6" id="5" className={this.arrClass[5]} onClick={this.onCharClick}>
                         <img src={{...charLst[5]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[5]}.name}</div>
                     </li>
-                    <li id="6" className={this.arrClass[6]} onClick={this.onCharClick}>
+                    <li tabindex ="71" id="6" className={this.arrClass[6]} onClick={this.onCharClick}>
                         <img src={{...charLst[6]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[6]}.name}</div>
                     </li>
-                    <li id="7" className={this.arrClass[7]} onClick={this.onCharClick}>
+                    <li tabindex ="8" id="7" className={this.arrClass[7]} onClick={this.onCharClick}>
                         <img src={{...charLst[7]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[7]}.name}</div>
                     </li>
-                    <li id="8" className={this.arrClass[8]} onClick={this.onCharClick}>
+                    <li tabindex ="9" id="8" className={this.arrClass[8]} onClick={this.onCharClick}>
                         <img src={{...charLst[8]}.thumbnail} alt="abyss" />
                         <div className="char__name">{{...charLst[8]}.name}</div>
                     </li>

@@ -23,7 +23,7 @@ class CharInfo extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.currChar !== prevProps.currChar) this.updateChar(this.props.currChar)
-    }
+    }    
 
     onError = () => {
         this.setState({
@@ -58,6 +58,8 @@ class CharInfo extends Component {
                 this.setState({loading: false, error: false});
             })
             .catch(this.onError);
+
+ //           this.foo.bar = 0;
     }
 
     render() {
