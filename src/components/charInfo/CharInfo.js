@@ -46,7 +46,7 @@ class CharInfo extends Component {
     }
 
     updateChar = (id) => {
-        console.log(id);
+       // console.log(id);
         if (!id) return;
         this.turnONspiner();
         this.offError();
@@ -103,7 +103,7 @@ const View = ({ char }) => {
 
 
     return (
-        <div char__wrapp>
+        <div>
             <div className="char__basics">
                 <img src={thumbnail} alt={name} style={imgStyle} />
                 <div>

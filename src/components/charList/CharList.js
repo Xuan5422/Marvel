@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
 import MarvelService from '../../services/MarvelService';
 import './charList.scss';
@@ -6,80 +6,68 @@ import './charList.scss';
 
 
 
-class CharList extends Component {
+const CharList = (props) => {
 
-    constructor(props) {
-        super(props);
-        this.arrClass = [];
-        
-        this.state = {
-            offset: 0,
-            activCharItem: null,
-            charLst: [],
-        
-    }
-        
-        }
+    const arrClass = [];
 
-    marvelService = new MarvelService()
+    const [offset, setOffset] = useState(0);
+    const [charLst, setCharLst] = useState([]);
 
-    componentDidMount() {
-        this.updateCharList();
-    }
 
-    updateCharList = () => {
-        const {currCharId} = this.props;
-        this.marvelService
-            .getAllCharacters(this.state.offset)
-                .then((resp) => {
-                    this.setState({
-                        charLst: [...this.state.charLst, ...resp],
-                        offset: this.state.offset + 9
-                    });
-                    currCharId(null);          
-                })
+    const marvelService = new MarvelService()
+
+    useEffect(() => {
+        updateCharList()
+    }, [])
+
+    const updateCharList = () => {
+        //      const { currCharId } = props;
+        marvelService
+            .getAllCharacters(offset)
+            .then((resp) => {
+                setCharLst(charLst => [...charLst, ...resp]);
+                setOffset(offset => offset + 9);
+                /* this.setState({
+                    charLst: [...this.state.charLst, ...resp],
+                    offset: this.state.offset + 9
+                }); */
+                //currCharId(null);
+            })
 
     }
 
-    onCharClick = (e) => {
-        const {charLst} = this.state;
-        const {currCharId} = this.props;
+    const onCharClick = (e) => {
 
-        this.setState({
-            activCharItem: e.currentTarget.id
-        }, () => currCharId({...charLst[this.state.activCharItem]}.id))
+        const { currCharId } = props;
+        currCharId({ ...charLst[e.currentTarget.id] }.id)
 
     }
 
-    render() {
-        const {charLst, activCharItem} = this.state;
 
-        for (let i = 0; i <= charLst.length; i++) this.arrClass[i] = "char__item";
-        if(activCharItem !== null) this.arrClass[activCharItem] = `${this.arrClass[activCharItem]} char__item_selected`;
+    for (let i = 0; i <= charLst.length; i++) arrClass[i] = "char__item";
 
-        const visCharList = charLst.map( (item, i) => {
-            return (
-                <li tabIndex ="0" key={i} id={i} className={this.arrClass[i]} onFocus={this.onCharClick}>
-                <img src={{...item}.thumbnail} alt={{...item}.name} />
-                <div className="char__name">{{...item}.name}</div>
+    const visCharList = charLst.map((item, i) => {
+        return (
+            <li tabIndex="0" key={i} id={i} className={arrClass[i]} onFocus={onCharClick}>
+                <img src={{ ...item }.thumbnail} alt={{ ...item }.name} />
+                <div className="char__name">{{ ...item }.name}</div>
             </li>
-            )
-            
-        })
-
-       return (
-            <div className="char__list">
-                <ul className="char__grid">
-
-                    {visCharList}
-
-                </ul>
-                <button className="button button__main button__long" onClick={this.updateCharList} >
-                    <div className="inner">load more</div>
-                </button>
-            </div>
         )
-    }
+
+    })
+
+    return (
+        <div className="char__list">
+            <ul className="char__grid">
+
+                {visCharList}
+
+            </ul>
+            <button className="button button__main button__long" onClick={updateCharList} >
+                <div className="inner">load more</div>
+            </button>
+        </div>
+    )
 }
 
 
