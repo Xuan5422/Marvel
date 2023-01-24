@@ -8,7 +8,7 @@ import './charList.scss';
 
 const CharList = (props) => {
 
-    const arrClass = [];
+   // const arrClass = [];
 
     const [offset, setOffset] = useState(0);
     const [charLst, setCharLst] = useState([]);
@@ -44,11 +44,11 @@ const CharList = (props) => {
     }
 
 
-    for (let i = 0; i <= charLst.length; i++) arrClass[i] = "char__item";
+   // for (let i = 0; i <= charLst.length; i++) arrClass[i] = "char__item";
 
     const visCharList = charLst.map((item, i) => {
         return (
-            <li tabIndex="0" key={i} id={i} className={arrClass[i]} onFocus={onCharClick}>
+            <li tabIndex="0" key={i} id={i} className="char__item" onFocus={onCharClick}>
                 <img src={{ ...item }.thumbnail} alt={{ ...item }.name} />
                 <div className="char__name">{{ ...item }.name}</div>
             </li>
